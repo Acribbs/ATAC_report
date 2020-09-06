@@ -67,3 +67,15 @@ def run_diffbind(infile, outfile):
     statement = '''Rscript %(R_SRC_PATH)s/DiffBind.R --design %(infile)s --output %(outfile)s'''
 
     P.run(statement)
+
+@follows(run_diffbind)
+def full():
+    pass
+
+def main(argv=None):
+    if argv is None:
+        argv = sys.argv
+    P.main(argv)
+
+if __name__ == "__main__":
+    sys.exit(P.main(sys.argv))
